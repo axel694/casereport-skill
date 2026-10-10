@@ -13,9 +13,15 @@ Kräver bara Python 3 och curl. SEC kräver User-Agent med namn och e-post.
 """
 import json, os, re, subprocess, sys, time, html
 
-UA = os.environ.get("SEC_USER_AGENT")
-if not UA:
-    sys.exit("Sätt miljövariabeln SEC_USER_AGENT (t.ex. \"Namn namn@exempel.se\"); SEC kräver identifierande User-Agent.")
+def _ua():
+    v = os.environ.get("SEC_USER_AGENT")
+    if not v:
+        f = os.path.expanduser("~/.config/casereport/sec_user_agent")
+        if os.path.exists(f): v = open(f).read().strip()
+    if not v:
+        sys.exit('Sätt miljövariabeln SEC_USER_AGENT (t.ex. "Namn namn@exempel.se") eller lägg den i ~/.config/casereport/sec_user_agent; SEC kräver identifierande User-Agent.')
+    return v
+UA = _ua()
 
 def get(url, binary=False):
     time.sleep(0.25)  # SEC: max 10 anrop/s, vi håller oss långt under

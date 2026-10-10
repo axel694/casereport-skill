@@ -36,6 +36,11 @@ Gå igenom listan före steg 3 och igen i granskningen.
 23. **Emissioner, ATM-program, warranter till kunder och konvertibler** påverkar aktieantal och värde per aktie. Läs aktiekapitalnoten och 8-K efter senaste 10-Q.
 24. **Kapitalintensiva bolag:** modellera kassaunderskott och tillväxtcapex; täck underskott med nya aktier i scenarierna så utspädningen syns.
 
+## Villkorliga åtaganden och kundfinansiering
+33. **Garantier (backstop), restvärdesgarantier, kundkonvertibler och finansieringsplattformar** ligger utanför nettoskulden. Läs 10-Q:s noter om åtaganden och "Recent developments"; redovisa maxbelopp, villkor och vem som bär förlusten, och jämför med nettoskuld och börsvärde. Gäller särskilt när bolaget hjälper kunder att finansiera köp av dess produkter.
+34. **RPO/orderåtaganden som hoppar** mellan kvartal beror ofta på ett enda långtidskontrakt; läs definition, uppsägningsrätt och andel som intäktsförs inom 12 månader.
+35. **Mått som utgår.** Om bolaget slutar redovisa ett mått (t.ex. justerad EBITDA), säg det, använd bolagets senast guidade nivå som märkt uppskattning och förklara bytet.
+
 ## Modell och hantverk
 25. **Kvartalssummor = årssiffra** (avrundning ±0,1). Räkna efter.
 26. **Modellen ska landa på bolagets guide** för innevarande år. Plugg som kalibrerar mot guiden märks som egen.

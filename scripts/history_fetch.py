@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Tio års historik ur SEC EDGAR: årsserie ur XBRL + alla årsrapporter (10-K) som text.
 
-Användning: python3 history_fetch.py TICKER UTMAPP [--years 10]
+Användning: python3 history_fetch.py TICKER UTMAPP [--years 10] [--extra-cik CIK ...]
+  --extra-cik: hämtar även äldre 10-K från en föregångare/tidigare filer (t.ex. när bolaget bytt moderbolag eller CIK); upprepas vid behov.
 
 Sparar i UTMAPP:
   historik_ar.csv / historik_ar.md   årsserie (intäkt, resultat, kassaflöde, SBC, aktier, balans) + härledda mått
@@ -12,9 +13,15 @@ Alla härledda mått är beräknade ur XBRL-siffrorna; verifiera nyckeltal mot 1
 """
 import csv, datetime as dt, html, json, os, re, subprocess, sys, time
 
-UA = os.environ.get("SEC_USER_AGENT")
-if not UA:
-    sys.exit("Sätt miljövariabeln SEC_USER_AGENT (t.ex. \"Namn namn@exempel.se\"); SEC kräver identifierande User-Agent.")
+def _ua():
+    v = os.environ.get("SEC_USER_AGENT")
+    if not v:
+        f = os.path.expanduser("~/.config/casereport/sec_user_agent")
+        if os.path.exists(f): v = open(f).read().strip()
+    if not v:
+        sys.exit('Sätt miljövariabeln SEC_USER_AGENT (t.ex. "Namn namn@exempel.se") eller lägg den i ~/.config/casereport/sec_user_agent; SEC kräver identifierande User-Agent.')
+    return v
+UA = _ua()
 
 def get(url):
     time.sleep(0.25)
@@ -122,6 +129,7 @@ def main():
         print("Ingen årsserie i XBRL.")
 
     # --- alla 10-K
+    extra = [sys.argv[i + 1] for i, x in enumerate(sys.argv) if x == "--extra-cik"]
     sub = json.loads(get(f"https://data.sec.gov/submissions/CIK{cik10}.json"))
     pages = [sub["filings"]["recent"]]
     for fobj in sub["filings"].get("files", []):
@@ -132,11 +140,19 @@ def main():
         for i in range(len(p["form"])):
             if p["form"][i] in ("10-K", "10-K405", "10-KSB"):
                 ks.append((p["filingDate"][i], p["accessionNumber"][i], p["primaryDocument"][i], p.get("reportDate", [""] * len(p["form"]))[i]))
+    for ec in extra:   # äldre 10-K från föregångarens CIK
+        ecik = int(ec); esub = json.loads(get(f"https://data.sec.gov/submissions/CIK{ecik:010d}.json"))
+        epages = [esub["filings"]["recent"]] + [json.loads(get("https://data.sec.gov/submissions/" + fo["name"])) for fo in esub["filings"].get("files", [])]
+        for p in epages:
+            for i in range(len(p["form"])):
+                if p["form"][i] in ("10-K", "10-K405", "10-KSB"):
+                    ks.append((p["filingDate"][i], p["accessionNumber"][i], p["primaryDocument"][i], p.get("reportDate", [""] * len(p["form"]))[i], ecik))
     ks = sorted(set(ks), reverse=True)[:ny]
     man = []
-    for fdate, acc, doc, rep in ks:
-        url = f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc.replace('-', '')}/{doc}"
-        fn = f"10-K_{rep or fdate}.txt"
+    for rec in ks:
+        fdate, acc, doc, rep = rec[:4]; ccik = rec[4] if len(rec) > 4 else cik
+        url = f"https://www.sec.gov/Archives/edgar/data/{ccik}/{acc.replace('-', '')}/{doc}"
+        fn = f"10-K_{rep or fdate}.txt" if ccik == cik else f"10-K_cik{ccik}_{rep or fdate}.txt"
         try:
             open(os.path.join(outd, "10k", fn), "w").write(totext(get(url)))
             man.append(dict(file=fn, filed=fdate, fiscal_year_end=rep, url=url)); print("  ", fn)

@@ -12,10 +12,13 @@ Det är inte ett säljmaterial och ger ingen köp- eller säljrekommendation. De
 5. Bygg rapport (docx) och presentation (pptx med inbyggda diagram).
 6. Faktagranska två gånger: omhämtning mot källor, konsistens, motprövning, omkörning av modellen.
 
+## Lärloop
+Skillet förbättrar sig självt: varje körning avslutas med utvärdering och förbättring (steg 10). Problem och lösningar sparas i `references/lärdomar.md`, återkommande lärdomar blir permanenta regler i `references/fallgropar.md` eller skript, och hjälpbibliotek för rapport och presentation ligger i `scripts/` så att nästa körning inte börjar om från noll.
+
 ## Innehåll
 - `SKILL.md`: arbetsflöde och hårda regler
 - `references/`: fallgropar, rapport- och slidestruktur, reverse DCF och tioårshistorik, valfritt Q&A/Excel
-- `scripts/`: `edgar_fetch.py` (SEC-hämtning), `history_fetch.py` (tio års XBRL och 10-K), `reverse_dcf.py` (reverse DCF och IRR-tabell), `ctx.py` (läs en siffra i sin kontext)
+- `scripts/`: `edgar_fetch.py` (SEC-hämtning), `history_fetch.py` (tio års XBRL och 10-K), `reverse_dcf.py` (reverse DCF och IRR-tabell), `ctx.py` (läs en siffra i sin kontext), `pptlib.py`, `docxlib.py` och `rendera.py` (bygg och granska presentation och rapport)
 
 ## Installera
 ```bash

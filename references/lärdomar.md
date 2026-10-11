@@ -6,6 +6,7 @@ Format: **Problem** · orsak · lösning · status (införd i: skript / fallgrop
 
 ## Hämtning och källor
 - **Pressmeddelanden hittades inte** · bilagan hette `exhibit991…`, inte `ex99…` · regexen i `edgar_fetch.py` accepterar nu `ex(hibit)?[-_]?99` · införd i skript.
+- **Pressmeddelanden saknas för senaste kvartalen** · bilagan hette `…xearningsre.htm` (varken ex99 eller exhibit99) · `edgar_fetch.py` provar nu 1) ex99-namn, 2) namn med earnings/press/release/results, 3) största övriga htm-filen · införd i skript (testad på ett bolag, 12 av 12 pr hittade).
 - **Äldre 10-K saknas (bolaget bytt moderbolag/CIK)** · SEC lagrar föregångaren under annan CIK · `history_fetch.py --extra-cik CIK` hämtar dem som `10-K_cik…` · införd i skript.
 - **Bara 5 av 10 årsrapporter finns** · bolaget nylistat · säg det i faktabasen och använd XBRL-serien för resten · anteckning.
 - **Tidsserier i XBRL blandar total och fortsättande verksamhet** (efter avyttring/omklassning) · senaste 10-K omräknar bara jämförelseåren · använd segmentnoterna eller omräknade pressmeddelanden och märk basen per år · fallgropar #7.
@@ -17,7 +18,7 @@ Format: **Problem** · orsak · lösning · status (införd i: skript / fallgrop
 - **Motsägelser mellan två års 10-K** (samma uppgift olika) · tryckfel eller omklassning · använd en konsekvent källa och flagga det · fallgropar #19.
 
 ## Läsa filings
-- **Sökträffar i inline-XBRL-huvudet** (tusentals taggar) bråkar med textsökning · rubriken ligger före första "fiscal year ended"/"quarterly period ended" · skär bort allt före den raden innan sökning · anteckning.
+- **Sökträffar i inline-XBRL-huvudet** (tusentals taggar) bråkar med textsökning · huvudet ligger före själva dokumentet; rubrikfraser varierar i versaler/format · `ctx.py` skär nu bort allt före "UNITED STATES SECURITIES AND EXCHANGE COMMISSION" (skiftlägesokänsligt) · införd i skript.
 - **Tal i SEC-text har mellanslag** (`$ 3,053`, `$ 29 billion`, ord klyvs som `m illion`) · konverteringen från HTML · sök på kortare delsträngar eller normalisera blanksteg · anteckning.
 - **Procentrader i 10-K har etiketter i annan ordning än tabellen** · textutdragets kolumnordning · räkna procent själv ur beloppen och jämför med meningen i texten · anteckning.
 - **Viktigaste risker står i 10-Q:s "Recent developments" och noter, inte i 10-K** (t.ex. garantier, finansieringsplattformar, kundkonvertibler) · nya åtaganden dyker upp mellan årsrapporterna · läs 10-Q:s noter om åtaganden, garantier och kundkoncentration alltid · steg 2.
@@ -51,3 +52,7 @@ Format: **Problem** · orsak · lösning · status (införd i: skript / fallgrop
 ## Process
 - **Samma uppställning byggdes om från noll för varje bolag** · hjälpkod låg i förra bolagets mapp · `pptlib.py`, `docxlib.py`, `rendera.py` ligger nu i `scripts/`; bygg bolagets `bygg_pptx.py`/`bygg_docx.py`/`modell.py` ovanpå dem · införd.
 - **Bolag som inte passar mallen** (förlustbolag, kapitalintensiva, förvärvsdrivna, konglomerat) · mallen antar lönsamhet och EBITDA · se referensen "Kapitalintensiva bolag och bolag utan vinst"; för förvärvsdrivna bolag: redovisa alla affärer med pris, finansiering, intäktsbidrag och avyttringar (`rapportstruktur.md`, avsnitt 7) · införd.
+- **Kontraktsdatum och leveransplan skrevs från minnet/fel pressmeddelande** (ett avtal daterades fel och en anläggning fick fel etikett) · ta datum, MW och leveransplan ur senaste 10-Q/10-K (avsnitt om avtal), inte ur ett äldre pr; granska.py ska söka datumsträngen i just den filen · införd som kontroll i granska-mönstret.
+- **Bolag med orealiserade hedgar (kraft, råvaror)** · GAAP-intäkt och nettoresultat svänger av mark-to-market · använd bolagets justerade EBITDA och kontraktsintäkt, räkna preferensaktier och forward-åtaganden som skuld i EV, och visa båda måtten · anteckning.
+- **Bolag yngre än tio år** · history_fetch ger färre år · skriv "åtta år" i rubrik och text i stället för att fylla med tomma år · anteckning.
+

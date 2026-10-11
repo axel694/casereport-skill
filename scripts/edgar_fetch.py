@@ -62,7 +62,10 @@ def main():
         try:
             idx = json.loads(get(base(x["acc"]) + "/index.json"))
             names = [d["name"] for d in idx["directory"]["item"]]
-            ex = next((m for m in names if re.search(r"ex(hibit)?[-_]?99", m, re.I) and m.lower().endswith((".htm", ".html"))), None)
+            htm = [d for d in idx["directory"]["item"] if d["name"].lower().endswith((".htm", ".html")) and not re.search(r"(^R\d+\.htm$|index|^" + re.escape(x["doc"]) + "$)", d["name"], re.I)]
+            ex = next((d["name"] for d in htm if re.search(r"ex(hibit)?[-_]?99", d["name"], re.I)), None)                      # 1) vanlig bilaga 99
+            if not ex: ex = next((d["name"] for d in htm if re.search(r"earnings|press|release|results", d["name"], re.I)), None)   # 2) namn som tyder på resultatpressmeddelande
+            if not ex and htm: ex = max(htm, key=lambda d: int(re.sub(r"\D", "", d.get("size") or "0") or 0))["name"]            # 3) största övriga htm-filen
             if not ex:
                 print("  hoppar över (ingen bilaga 99):", x["date"]); continue
             url = base(x["acc"]) + "/" + ex

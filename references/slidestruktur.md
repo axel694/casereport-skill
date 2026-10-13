@@ -5,6 +5,7 @@ Beslutsunderlag för användaren, inte säljmaterial. Bred 16:9. Redigerbara obj
 ## Läge: lätt (standard) eller utökad
 **Standard är alltid lättversionen:** lite text, mest diagram och tabeller. Utökad version (full textmängd nedan) byggs när användaren väljer det i frågan i steg 0, som ställs innan arbetet börjar.
 Regler för lättversionen:
+- **Allt som inte får plats på slidesen ska finnas i rapporten (docx).** Rapporten är den fullständiga källan: varje siffra, punkt, antagande, tabell och resonemang som utelämnas på en slide (inklusive reverse DCF-antaganden, förvärvsdetaljer, skuldvillkor, vinstkvalitet, kunder, risker) står där, med källa. Slides får aldrig innehålla något som saknas i rapporten.
 - Varje slide har en rubrik (beskrivande), **ett huvudobjekt** (inbyggt diagram eller kompakt tabell) och högst **en förklarande rad** (max cirka 20 ord) eller 2–3 stödpunkter på högst 8 ord. Inga textblock, inga stycken.
 - Siffror och nyanser som i utökad version står i löptext flyttas till **anteckningsfältet** (speaker notes) och rapporten, så inget belägg försvinner. Källrad och prisdatum behålls på varje slide.
 - Föredra diagram framför tabeller där en trend, mix eller jämförelse ska visas (intäktsmix, tolv kvartal, skuldförfall, scenarier, tio år). Tabeller bara för break-even, känslighet och risker, och då med korta celler.

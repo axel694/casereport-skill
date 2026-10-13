@@ -3,7 +3,7 @@
 Beslutsunderlag för användaren, inte säljmaterial. Bred 16:9. Redigerbara objekt (egna textrutor, tabeller och **inbyggda diagram**), inga bilder av text. Teckensnitt Calibri, serif/Times i rubriker. Färger: marinblå `1F3864` (neutral information), sandfärgad `B8A38D`, mörkröd `C00000` för risk och det som talar emot, grå `D9D9D9` för förklaringsfält. Språk svenska. Inga siffror från licensierade terminaler. Källrad längst ner (typ "Källa: <Bolag> 10-K FY.., 10-Q Q.. och bolagets pressmeddelanden. Uppskattningar är mina."). Prisdatum på varje slide med värdering. Slidetitlar beskriver innehållet ("Skuld och finansiering"), de säljer inget ("Kraftigt underskattad"). Inga säljande adjektiv. Det som talar emot ska synas lika tydligt som det som talar för, och risker kommer före fördelar.
 
 ## Läge: lätt (standard) eller utökad
-**Standard är alltid lättversionen:** lite text, mest diagram och tabeller. Utökad version (nuvarande full textmängd nedan) byggs bara om användaren svarar ja på frågan i steg 11.
+**Standard är alltid lättversionen:** lite text, mest diagram och tabeller. Utökad version (full textmängd nedan) byggs när användaren väljer det i frågan i steg 0, som ställs innan arbetet börjar.
 Regler för lättversionen:
 - Varje slide har en rubrik (beskrivande), **ett huvudobjekt** (inbyggt diagram eller kompakt tabell) och högst **en förklarande rad** (max cirka 20 ord) eller 2–3 stödpunkter på högst 8 ord. Inga textblock, inga stycken.
 - Siffror och nyanser som i utökad version står i löptext flyttas till **anteckningsfältet** (speaker notes) och rapporten, så inget belägg försvinner. Källrad och prisdatum behålls på varje slide.

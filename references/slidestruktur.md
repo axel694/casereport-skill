@@ -2,6 +2,17 @@
 
 Beslutsunderlag för användaren, inte säljmaterial. Bred 16:9. Redigerbara objekt (egna textrutor, tabeller och **inbyggda diagram**), inga bilder av text. Teckensnitt Calibri, serif/Times i rubriker. Färger: marinblå `1F3864` (neutral information), sandfärgad `B8A38D`, mörkröd `C00000` för risk och det som talar emot, grå `D9D9D9` för förklaringsfält. Språk svenska. Inga siffror från licensierade terminaler. Källrad längst ner (typ "Källa: <Bolag> 10-K FY.., 10-Q Q.. och bolagets pressmeddelanden. Uppskattningar är mina."). Prisdatum på varje slide med värdering. Slidetitlar beskriver innehållet ("Skuld och finansiering"), de säljer inget ("Kraftigt underskattad"). Inga säljande adjektiv. Det som talar emot ska synas lika tydligt som det som talar för, och risker kommer före fördelar.
 
+## Läge: lätt (standard) eller utökad
+**Standard är alltid lättversionen:** lite text, mest diagram och tabeller. Utökad version (nuvarande full textmängd nedan) byggs bara om användaren svarar ja på frågan i steg 11.
+Regler för lättversionen:
+- Varje slide har en rubrik (beskrivande), **ett huvudobjekt** (inbyggt diagram eller kompakt tabell) och högst **en förklarande rad** (max cirka 20 ord) eller 2–3 stödpunkter på högst 8 ord. Inga textblock, inga stycken.
+- Siffror och nyanser som i utökad version står i löptext flyttas till **anteckningsfältet** (speaker notes) och rapporten, så inget belägg försvinner. Källrad och prisdatum behålls på varje slide.
+- Föredra diagram framför tabeller där en trend, mix eller jämförelse ska visas (intäktsmix, tolv kvartal, skuldförfall, scenarier, tio år). Tabeller bara för break-even, känslighet och risker, och då med korta celler.
+- Risker kommer fortfarande före fördelar, och det som talar emot är lika synligt. Lätt betyder inte ensidigt.
+- Slides som slås ihop i lättversionen: 5 (skuld) och 6 (förvärv) kan delas om ett diagram räcker; 7 (vinstkvalitet) blir ett diagram GAAP mot justerat; 12–13 blir en slide. Mål cirka 10–12 slides totalt.
+- Reverse DCF: en slide med diagram (implicerad CAGR mot historik) + en känslighetstabell; antagandetabellen ligger i anteckningarna och rapporten.
+- Slide 1 (beslutsöversikt): behåll fyra fält men punkterna kortas till fraser (högst 6–8 ord) och EBITDA-diagrammet får mer plats.
+
 ## Slide 1: Beslutsöversikt
 Fyra delar (med implicerad CAGR från reverse DCF som en rad under "Vad kursen redan prisar") plus titel (bolag, kurs och prisdatum, börsvärde, EV) och källrad:
 - **Uppe till vänster:** inbyggt kolumndiagram över justerad EBITDA (utfall, senaste kvartal x4 och min uppskattning för målåret) med tydlig bas. Ingen pil som säljer uppsida; en etikett med faktor mot nuvarande nivå räcker.

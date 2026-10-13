@@ -147,6 +147,13 @@ class Deck:
             elif kind != "line": dl.position = XL_LABEL_POSITION.OUTSIDE_END
             else: dl.position = XL_LABEL_POSITION.ABOVE
         return gf
+    def pic(self, s, x, y, w, path):
+        """Lägger in en bild (till exempel TradingView-skärmbild) med bredd w tum; höjden följer bildens proportioner."""
+        from PIL import Image as _I
+        iw, ih = _I.open(path).size
+        pc = s.shapes.add_picture(path, Inches(x), Inches(y), width=Inches(w))
+        FIT.append((s._no, "bild (höjd)", round(w * ih / iw, 2), None))
+        return pc
     def report_fit(self):
         bad = [f for f in FIT if f[3] is not None and f[2] > f[3] + 0.02]
         for f in bad: print("FÖR HÖG:", f)

@@ -63,3 +63,4 @@ Format: **Problem** · orsak · lösning · status (införd i: skript / fallgrop
 - **Egna räknefel i mönstertext** (3-års-CAGR, återköpssumma, tillväxtår) · skrevs för hand före modellen · hämta alla tal ur modellen; skriv mönster efter modellkörning · steg 10 (upprepning, nu regel).
 - **Diagramunderlag saknas i rapporten** · slides hade diagram vars värden inte stod i texten · lägg bilaga med diagramunderlag (bilaga F) · införd i steg 9g.
 - **Stackade diagram** saknades i pptlib · lagt till `kind="stack"` · införd.
+- **TradingView-appen gavs bara läsbehörighet** (computer use tier read) · går inte att klicka eller skrolla · be användaren visa Forecast-sidan eller använd hens skärmbild; `app_screenshot` visar bara bilden, så spara filen från användarens bild · anteckning (steg 2c).

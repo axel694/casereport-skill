@@ -56,3 +56,10 @@ Format: **Problem** · orsak · lösning · status (införd i: skript / fallgrop
 - **Bolag med orealiserade hedgar (kraft, råvaror)** · GAAP-intäkt och nettoresultat svänger av mark-to-market · använd bolagets justerade EBITDA och kontraktsintäkt, räkna preferensaktier och forward-åtaganden som skuld i EV, och visa båda måtten · anteckning.
 - **Bolag yngre än tio år** · history_fetch ger färre år · skriv "åtta år" i rubrik och text i stället för att fylla med tomma år · anteckning.
 
+
+## FICO (2026-10)
+- **Quick Look hänger** (rendera.py) · qlmanage ger inget svar · kontrollera layout med `kontrollera_leverans.py` (bounding boxes, fit-check) och öppna filen i PowerPoint · införd i skript.
+- **Punktdecimaler i svensk text** (21.367) · f-strängar med `:.3f` · använd `fmt(v, d)` överallt; `kontrollera_leverans.py` söker efter dem · införd i skript.
+- **Egna räknefel i mönstertext** (3-års-CAGR, återköpssumma, tillväxtår) · skrevs för hand före modellen · hämta alla tal ur modellen; skriv mönster efter modellkörning · steg 10 (upprepning, nu regel).
+- **Diagramunderlag saknas i rapporten** · slides hade diagram vars värden inte stod i texten · lägg bilaga med diagramunderlag (bilaga F) · införd i steg 9g.
+- **Stackade diagram** saknades i pptlib · lagt till `kind="stack"` · införd.

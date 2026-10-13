@@ -50,3 +50,10 @@ Gå igenom listan före steg 3 och igen i granskningen.
 30. **Förhandsvisning**: Quick Look ritar inte alla inbyggda diagram och byter typsnitt. Det betyder inte att filen är trasig.
 31. **"Billig" kräver "mot vad"**: mot egen historik, mot peers eller mot guide. Skilj på "ägt av" och "köpt av" i affärer.
 32. **Skickad version.** Ändra aldrig en skickad fil utan att säga vilken version som gäller; när något skickats, notera filnamn och datum.
+
+## Tillagt efter FICO (2026-10)
+36. **Bolag som inte redovisar EBITDA.** Räkna rörelseresultat + D&A + SBC + restrukturering, märk som min beräkning (EST), visa även efter SBC, och skriv i definitionsbilagan att bolaget saknar måttet.
+37. **Kurs efter en kraftig chock.** Kolla två datafeeds för stängning samma dag och 8-K efter senaste 10-Q (nedskärning, avtal) innan EV byggs; orsaker i media är sekundära.
+38. **Covenantmått utan definition.** Redovisa gränserna (och när de sänks) och märk egen skuldsättningsberäkning som EST; visa bear-scenariot mot gränsen.
+39. **ASC 606-omräkning.** XBRL har både ursprungliga och omräknade värden för äldre år; kontrollera mot båda och märk serier som inte är jämförbara.
+40. **Köp/sälj-begäran.** Ge aldrig en etikett; gör Min analys (steg 5c) i stället.

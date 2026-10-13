@@ -116,7 +116,7 @@ class Deck:
     def chart(self, s, x, y, w, h, cats, series, kind="col", colors=(NAVY, SAND, RED), numfmt='#,##0', title=None, legend=True, labels=True, size=9, gap=60, point_colors=None, ymax=None):
         cd = CategoryChartData(); cd.categories = cats
         for n, vals in series: cd.add_series(n, vals)
-        ct = {"col": XL_CHART_TYPE.COLUMN_CLUSTERED, "line": XL_CHART_TYPE.LINE_MARKERS, "bar": XL_CHART_TYPE.BAR_CLUSTERED}[kind]
+        ct = {"col": XL_CHART_TYPE.COLUMN_CLUSTERED, "line": XL_CHART_TYPE.LINE_MARKERS, "bar": XL_CHART_TYPE.BAR_CLUSTERED, "stack": XL_CHART_TYPE.COLUMN_STACKED}[kind]
         gf = s.shapes.add_chart(ct, Inches(x), Inches(y), Inches(w), Inches(h), cd); ch = gf.chart
         ch.font.size = Pt(size); ch.font.name = SANS
         ch.has_legend = legend and len(series) > 1
@@ -143,7 +143,8 @@ class Deck:
         if labels:
             pl = ch.plots[0]; pl.has_data_labels = True; dl = pl.data_labels
             dl.font.size = Pt(size - 1); dl.number_format = numfmt; dl.number_format_is_linked = False
-            if kind != "line": dl.position = XL_LABEL_POSITION.OUTSIDE_END
+            if kind == "stack": dl.position = XL_LABEL_POSITION.CENTER
+            elif kind != "line": dl.position = XL_LABEL_POSITION.OUTSIDE_END
             else: dl.position = XL_LABEL_POSITION.ABOVE
         return gf
     def report_fit(self):
